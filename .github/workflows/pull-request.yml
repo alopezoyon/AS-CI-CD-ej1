@@ -4,23 +4,22 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  code-analysis:
     runs-on: ubuntu-latest
 
+    permissions:
+      security-events: write
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+    - name: Code Analysis
+      uses: advanced-security/python-lint-code-scanning-action@v1
+      with:
+        linter: pylint
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Ajusta según tus requisitos
-
-      - name: Run linter
-        run: |
-          pylint your_code_directory  # Ajusta según tu estructura de directorios
+    - name: Check Code Analysis Results
+      run: |
+        # Add any additional steps here to check the results, if needed
+        echo "Check the code analysis results"
