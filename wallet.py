@@ -11,5 +11,5 @@ class Wallet:
     def remove_balance(self, val):
         self.balance = self.balance - val
 
-    def increment_balance(balance):
-        return balance + 1000
+    def increment_balance(self, balance):
+        return self.balance + 1000
