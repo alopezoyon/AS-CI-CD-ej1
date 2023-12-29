@@ -16,5 +16,5 @@ def test_setbalance():
     assert obj.get_balance() == 40
 
 def test_increment_balance():
-    assert increment_balance(500) == 1500
+    assert obj.increment_balance(500) == 1500
 
