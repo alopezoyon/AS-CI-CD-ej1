@@ -1,0 +1,25 @@
+name: examen-workflow
+
+on:
+  push:
+    branches:
+      - nueva-caracteristica
+
+jobs:
+  tareas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bajar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        run: actions/setup-python@v4
+
+      - name: Ejecutar comando
+        run: pip install pytest
+
+      - name: Ejecutar comando
+        run: pytest test.py
+
+      - name: Construir imagen
+        run: docker/build-push-action@v5
